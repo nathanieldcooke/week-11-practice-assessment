@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+    body 
+        form(action="/new-person", method="post") 
+            input(type="hidden", name="_csrf" value=csrfToken)
+            label(for="firstName") First Name:  
+            input(type="text", name="firstName" required=true)
+            label(for="lastName") Last Name:  
+            input(type="text", name="lastName" required=true)
+            label(for="age") Age:
+            input(type="number", name="age") 
+            label(for="biography")
+            textarea(name="biography", cols="30", rows="10")  
+            label(for="hairColorId")
+            select(name="hairColorId" required=true)  
+                each color in hairColors 
+                    option(value=color.id)= color.color
+            button Submit
+
